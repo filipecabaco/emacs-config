@@ -3,7 +3,7 @@
 (setq inhibit-startup-message t)
 (setq default-directory "~/")
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+(fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 
 (global-linum-mode)
@@ -11,7 +11,8 @@
 
 ;;File configuration
 (setq create-lockfiles nil)
-
+(setq backup-inhibited t)
+(setq auto-save-default nil)
 
 ;;Ido
 (ido-mode 1)
