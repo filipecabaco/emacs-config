@@ -19,15 +19,20 @@
     smex
     projectile
     helm
+    helm-projectile
     neotree
     magit
+    avy
     solarized-theme
     ;;Elixir
     alchemist
     elixir-mode
     ;;Clojure
     cider
-    clojure-mode))
+    clojure-mode
+    ;;Markdown
+    markdown-mode
+    markdown-preview-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
