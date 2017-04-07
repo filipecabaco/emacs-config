@@ -5,6 +5,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (global-linum-mode)
 (blink-cursor-mode 0)

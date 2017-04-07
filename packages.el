@@ -64,6 +64,5 @@
 ;;Projectile
 (projectile-mode)
 
-;;Solarized 
+;;Solarized
 (load-theme 'solarized-dark t)
-
