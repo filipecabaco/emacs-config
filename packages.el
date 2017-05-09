@@ -66,3 +66,5 @@
 
 ;;Solarized
 (load-theme 'solarized-dark t)
+
+(add-hook 'clojure-mode-hook #'paredit-mode)

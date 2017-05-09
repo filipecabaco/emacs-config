@@ -1,11 +1,13 @@
 (package-initialize)
 
 (setq inhibit-startup-message t)
+(setq initial-buffer-choice "~/org.org")
 (setq default-directory "~/")
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(global-auto-revert-mode 1)
 
 (global-linum-mode)
 (blink-cursor-mode 0)
