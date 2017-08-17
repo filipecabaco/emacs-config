@@ -30,9 +30,18 @@
     ;;Clojure
     cider
     clojure-mode
+    ;;Ruby
+    enh-ruby-mode
+    ;; Docker
+    dockerfile-mode
+    ;; YAML
+    yaml-mode
     ;;Markdown
     markdown-mode
-    markdown-preview-mode))
+    markdown-preview-mode
+    ;;Write
+    visual-fill-column
+    writeroom-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -61,10 +70,11 @@
 ;;Magit
 (setq magit-completing-read-function 'magit-ido-completing-read)
 
+;;Clojure
+(add-hook 'clojure-mode-hook #'paredit-mode)
+
 ;;Projectile
 (projectile-mode)
 
 ;;Solarized
 (load-theme 'solarized-dark t)
-
-(add-hook 'clojure-mode-hook #'paredit-mode)
