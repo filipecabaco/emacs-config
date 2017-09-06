@@ -24,6 +24,10 @@
 (setq ido-enable-flex-matching t)
 (setq ido-auto-merge-work-directories-length -1)
 
+;; Needed to normalize PATH in OSX
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 (load-file "~/.emacs.d/packages.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

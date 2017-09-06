@@ -24,28 +24,29 @@
     magit
     avy
     solarized-theme
+    exec-path-from-shell
     ;;Elixir
-    alchemist
     elixir-mode
+    alchemist
     ;;Clojure
     cider
     clojure-mode
     ;;Ruby
     enh-ruby-mode
-    ;; Docker
+    ;;Docker
     dockerfile-mode
-    ;; YAML
+    ;;YAML
     yaml-mode
     ;;Markdown
     markdown-mode
-    markdown-preview-mode
-    ;;Write
-    visual-fill-column
-    writeroom-mode))
+    markdown-preview-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;;Magit
+(setq magit-completing-read-function 'magit-ido-completing-read)
 
 ;;Smex
 (smex-initialize)
@@ -60,21 +61,32 @@
 (global-set-key [f8] 'neotree-toggle)
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
+;;Projectile
+(projectile-mode)
+
 ;;Company
-(global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0.1)
 (setq company-tooltip-limit 10)
-(setq company-minimum-prefix-length 2)
 (setq company-tooltip-flip-when-above t)
 
-;;Magit
-(setq magit-completing-read-function 'magit-ido-completing-read)
+;;Solarized
+(load-theme 'solarized-dark t)
 
 ;;Clojure
 (add-hook 'clojure-mode-hook #'paredit-mode)
 
-;;Projectile
-(projectile-mode)
+;;Elixir
 
-;;Solarized
-(load-theme 'solarized-dark t)
+(setq alchemist-hooks-compile-on-save t)
+
+;;Needed when using brew
+(when (memq window-system '(mac ns x))
+  (setq alchemist-mix-command "/usr/local/Cellar/elixir/1.5.1/bin/mix")
+  (setq alchemist-iex-command "/usr/local/Cellar/elixir/1.5.1/bin/iex")
+  (setq alchemist-execute-command "/usr/local/Cellar/elixir/1.5.1/bin/elixir")
+  (setq alchemist-compile-command "/usr/local/Cellar/elixir/1.5.1/bin/elixirrc")
+  (setq alchemist-goto-erlang-source-dir "/usr/local/Cellar/erlang/20.0.4/lib")
+  (setq alchemist-goto-elixir-source-dir "/usr/local/Cellar/elixir/1.5.1/lib"))
+(require 'elixir-mode)
+(add-to-list 'elixir-mode-hook 'alchemist-mode)
