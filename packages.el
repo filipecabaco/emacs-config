@@ -30,16 +30,7 @@
     alchemist
     ;;Clojure
     cider
-    clojure-mode
-    ;;Ruby
-    enh-ruby-mode
-    ;;Docker
-    dockerfile-mode
-    ;;YAML
-    yaml-mode
-    ;;Markdown
-    markdown-mode
-    markdown-preview-mode))
+    clojure-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -73,11 +64,15 @@
 ;;Solarized
 (load-theme 'solarized-dark t)
 
+;; exec-path-from-shell-initialize
+;; Needed to normalize PATH in OSX
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;;Clojure
 (add-hook 'clojure-mode-hook #'paredit-mode)
 
 ;;Elixir
-
 (setq alchemist-hooks-compile-on-save t)
 
 ;;Needed when using brew
